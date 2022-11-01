@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OlchaAPI", "\peter\ZDrive\00009319\Desktop\DSCC.CW1.9319\OlchaAPI\OlchaAPI\OlchaAPI.csproj", "{67069536-7C5B-4404-B2F3-ABE9E106FB38}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67069536-7C5B-4404-B2F3-ABE9E106FB38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67069536-7C5B-4404-B2F3-ABE9E106FB38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67069536-7C5B-4404-B2F3-ABE9E106FB38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67069536-7C5B-4404-B2F3-ABE9E106FB38}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {82DD3B17-E78F-492E-8006-D424C813763D}
+	EndGlobalSection
+EndGlobal
