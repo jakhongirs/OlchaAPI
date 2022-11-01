@@ -14,15 +14,37 @@ namespace OlchaAPI.Controllers
                     Name="Xiaomi Mi Band 6",
                     Description="Fitnes braslet, 32 MB, 125 mAh, Bluetooth v 5.0",
                     Price=353000,
-                }
+                },
+
+                new Product {
+                    Id = 2,
+                    Name="Смартфон Samsung Galaxy A32 6 GB 128GB Черный",
+                    Description="Single SIM (Micro-SIM) or Dual SIM (Micro-SIM, dual stand-by)",
+                    Price=2825000,
+                },
             };
 
+
+        /*ALL PRODUCTS*/
         [HttpGet]
         public async Task<ActionResult<List<Product>>> Get()
         {
             return Ok(products);
         }
 
+        /*SINGLE PRODUCT*/
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Product>> Get(int id)
+        {
+            var product = products.Find(x => x.Id == id);
+            if(product == null)
+            {
+                return BadRequest("Product Not Found!");
+            }
+            return Ok(product);
+        }
+
+        /*CREATE PRODUCT*/
         [HttpPost]
         public async Task<ActionResult<List<Product>>> AddProduct(Product product)
         {
