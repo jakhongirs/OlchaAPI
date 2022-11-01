@@ -51,6 +51,24 @@ namespace OlchaAPI.Controllers
             products.Add(product);
             return Ok(products);
         }
+
+        /*UPDATE PRODUCT*/
+        [HttpPut]
+        public async Task<ActionResult<List<Product>>> UpdateProduct(Product request)
+        {
+            var product = products.Find(x => x.Id == request.Id);
+
+            if (product == null)
+            {
+                return BadRequest("Product Not Found!");
+            } 
+            
+            product.Name = request.Name;
+            product.Description = request.Description;
+            product.Price = request.Price;
+
+            return Ok(products);
+        }
     }
 }
 
