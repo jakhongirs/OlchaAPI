@@ -69,6 +69,20 @@ namespace OlchaAPI.Controllers
 
             return Ok(products);
         }
+
+        /*DELETE PRODUCT*/
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<List<Product>>> Delete(int id)
+        {
+            var product = products.Find(x => x.Id == id);
+            if (product == null)
+            {
+                return BadRequest("Product Not Found!");
+            }
+
+            products.Remove(product);
+            return Ok(products);
+        }
     }
 }
 
