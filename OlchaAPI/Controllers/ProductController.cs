@@ -7,40 +7,31 @@ namespace OlchaAPI.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private static List<Product> products = new List<Product>
-            {
-                new Product {
-                    Id = 1,
-                    Name="Xiaomi Mi Band 6",
-                    Description="Fitnes braslet, 32 MB, 125 mAh, Bluetooth v 5.0",
-                    Price="353000",
-                },
+        private readonly DataContext _context;
 
-                new Product {
-                    Id = 2,
-                    Name="Смартфон Samsung Galaxy A32 6 GB 128GB Черный",
-                    Description="Single SIM (Micro-SIM) or Dual SIM (Micro-SIM, dual stand-by)",
-                    Price="2825000",
-                },
-            };
+        public ProductController(DataContext context)
+        {
+            _context = context;
+        }
 
 
         /*ALL PRODUCTS*/
         [HttpGet]
         public async Task<ActionResult<List<Product>>> Get()
         {
-            return Ok(products);
+            return Ok(await _context.Products.ToListAsync());
         }
 
         /*SINGLE PRODUCT*/
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> Get(int id)
         {
-            var product = products.Find(x => x.Id == id);
+            var product = await _context.Products.FindAsync(id);
             if(product == null)
             {
                 return BadRequest("Product Not Found!");
             }
+
             return Ok(product);
         }
 
@@ -48,40 +39,46 @@ namespace OlchaAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<List<Product>>> AddProduct(Product product)
         {
-            products.Add(product);
-            return Ok(products);
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
+
+            return Ok(await _context.Products.ToListAsync());
         }
 
         /*UPDATE PRODUCT*/
         [HttpPut]
         public async Task<ActionResult<List<Product>>> UpdateProduct(Product request)
         {
-            var product = products.Find(x => x.Id == request.Id);
-
+            var product = await _context.Products.FindAsync(request.Id);
             if (product == null)
             {
                 return BadRequest("Product Not Found!");
-            } 
-            
+            }
+
             product.Name = request.Name;
             product.Description = request.Description;
             product.Price = request.Price;
 
-            return Ok(products);
+            await _context.SaveChangesAsync();
+
+            return Ok(await _context.Products.ToListAsync());
         }
 
         /*DELETE PRODUCT*/
         [HttpDelete("{id}")]
         public async Task<ActionResult<List<Product>>> Delete(int id)
         {
-            var product = products.Find(x => x.Id == id);
+            var product = await _context.Products.FindAsync(id);
             if (product == null)
             {
                 return BadRequest("Product Not Found!");
             }
 
-            products.Remove(product);
-            return Ok(products);
+            _context.Products.Remove(product);
+
+            await _context.SaveChangesAsync();
+
+            return Ok(await _context.Products.ToListAsync());
         }
     }
 }
