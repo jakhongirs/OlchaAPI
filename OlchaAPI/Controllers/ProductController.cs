@@ -13,14 +13,14 @@ namespace OlchaAPI.Controllers
                     Id = 1,
                     Name="Xiaomi Mi Band 6",
                     Description="Fitnes braslet, 32 MB, 125 mAh, Bluetooth v 5.0",
-                    Price=353000,
+                    Price="353000",
                 },
 
                 new Product {
                     Id = 2,
                     Name="Смартфон Samsung Galaxy A32 6 GB 128GB Черный",
                     Description="Single SIM (Micro-SIM) or Dual SIM (Micro-SIM, dual stand-by)",
-                    Price=2825000,
+                    Price="2825000",
                 },
             };
 

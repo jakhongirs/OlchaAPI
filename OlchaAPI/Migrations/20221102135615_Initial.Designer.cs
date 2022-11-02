@@ -11,7 +11,7 @@ using OlchaAPI.Data;
 namespace OlchaAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221101151250_Initial")]
+    [Migration("20221102135615_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,8 +39,9 @@ namespace OlchaAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("Price")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
