@@ -1,0 +1,17 @@
+ [Unit]
+ Description=.NET OlchaAPI 00009319
+
+ [Service]
+ WorkingDirectory=/var/www/
+ ExecStart=/usr/bin/dotnet /var/www/OlchaAPI.dll
+ Restart=always
+
+ RestartSec=10
+ KillSignal=SIGINT
+ SyslogIdentifier=webapi
+ Environment=ASPNETCORE_ENVIRONMENT=Production
+ Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
+ Environment=ASPNETCORE_URL=http://*:80
+
+ [Install]
+ WantedBy=multi-user.target
