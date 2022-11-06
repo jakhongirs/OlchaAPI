@@ -1,5 +1,5 @@
-﻿version: "0.0"
-os: "linux"
+﻿version: 0.0
+os: linux
 files:
   - source: app
     destination: /var/www
