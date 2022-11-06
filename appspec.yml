@@ -2,7 +2,7 @@
 os: linux
 files:
   - source: app
-    destination: /var/www/
+    destination: /var/www
   - source: deploy-scripts/webapi.service
     destination: /etc/systemd/system
 hooks:
